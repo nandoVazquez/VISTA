@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="VISTA.BusinessLogic/VISTA.BusinessLogic.csproj" />
+  <Project Path="VISTA.DataAccess/VISTA.DataAccess.csproj" />
+  <Project Path="VISTA.Models/VISTA.Models.csproj" />
+  <Project Path="VISTA.Web/VISTA.Web.csproj" />
+</Solution>

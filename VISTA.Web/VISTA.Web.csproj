@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\VISTA.BusinessLogic\VISTA.BusinessLogic.csproj" />
+    <ProjectReference Include="..\VISTA.DataAccess\VISTA.DataAccess.csproj" />
+    <ProjectReference Include="..\VISTA.Models\VISTA.Models.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>8ad2de6c-7b41-4ce3-99f0-0e3f73769395</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

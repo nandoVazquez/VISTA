@@ -1,0 +1,94 @@
+@page
+@model VISTA.Web.Pages.DetailsModel
+
+@using VISTA.Models
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!-- Page Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3">Request Details</h1>
+    <span class="badge @Model.VAR.StatusBadgeClass fs-6">@Model.VAR.Status</span>
+</div>
+
+<!-- Details Card -->
+<div class="card">
+    <div class="card-body">
+
+            <!-- Visitor Infromation -->
+            <h5 class="mb-3">Visitor Information</h5>  
+            <div class="row mb-2">
+                <div class="col-sm-4 text-muted">Visitor Name</div>
+                <div class="col-sm-8">@Model.VAR.VisitorName</div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-sm-4 text-muted">Visitor Organization</div>
+                <div class="col-sm-8">@Model.VAR.VisitorOrganization</div>
+            </div>
+
+            <hr class="my-4" />
+     
+            <!-- Sponsor Information -->
+            <h5 class="mb-3">Sponsor Information</h5>
+             <div class="row mb-2">
+                <div class="col-sm-4 text-muted">Sponsor Name</div>
+                <div class="col-sm-8">@Model.VAR.SponsorName</div>
+            </div>    
+            <div class="row mb-2">
+                <div class="col-sm-4 text-muted">Sponsor Email</div>
+                <div class="col-sm-8">@Model.VAR.SponsorEmail</div>
+            </div>
+
+            <hr class="my-4" />
+            
+            <!-- Visit Details -->
+            <h5 class="mb-3">Visit Details</h5>
+            <div class="row mb-2">
+                <div class="col-sm-4 text-muted">Purpose of Visit</div>
+                <div class="col-sm-8">@Model.VAR.VisitPurpose</div>
+            </div>
+
+            <div class="row mb-2">
+                    <div class="col-sm-4 text-muted">Visit Start Date</div>
+            <div class="col-sm-8">@Model.VAR.VisitStartDate.ToString("MM/dd/yyyy hh:mm tt")</div>
+            </div>
+
+            <div class="row mb-2">
+                    <div class="col-sm-4 text-muted">Visit End Date</div>
+            <div class="col-sm-8">@Model.VAR.VisitEndDate.ToString("MM/dd/yyyy hh:mm tt")</div>
+            </div>
+
+            <div class="row mb-2">
+                    <div class="col-sm-4 text-muted">Created Date</div>
+                    <div class="col-sm-8">@Model.VAR.CreatedDate.ToString("MM/dd/yyyy hh:mm tt")</div>
+            </div>
+
+            <div class="row mb-2">
+                    <div class="col-sm-4 text-muted">Last Updated</div>
+                    <div class="col-sm-8">@Model.VAR.LastUpdatedDate.ToString("MM/dd/yyyy hh:mm tt")</div>
+            </div>
+
+        <!-- Approve and Deny buttons for Admin-->
+        <div class="mt-3 d-flex gap-2">
+            @if (Model.VAR.Status == RequestStatus.Submitted && HttpContext.Session.GetString("Role") == "Admin")
+            {
+                <form method="post" asp-page-handler="Approve">
+                    <input type="hidden" name="id" value="@Model.VAR.ID" />
+                    <button type="submit" class="btn btn-success">Approve</button>
+                </form>
+                <form method="post" asp-page-handler="Deny">
+                    <input type="hidden" name="id" value="@Model.VAR.ID" />
+                    <button type="submit" class="btn btn-danger">Deny</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- BACK BUTTON — bottom left -->
+<div class="mt-3">
+    <a href="/Index" class="btn btn-outline-secondary">Back</a>
+</div>
